@@ -12,6 +12,15 @@ spec:
       labels:
         app: httpd
     spec:
+      initContainers:
+      - name: init-content
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo "<h1>Welcome to My Apache Server!</h1>" > /mnt/index.html;
+        volumeMounts:
+        - name: httpd-storage
+          mountPath: /mnt
       containers:
       - name: httpd
         image: httpd:latest
