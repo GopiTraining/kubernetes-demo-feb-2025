@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: httpd-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: httpd
@@ -17,7 +17,7 @@ spec:
         image: busybox
         command: ["/bin/sh", "-c"]
         args:
-          - echo "<h1>Welcome to My Devops Training!!..</h1>" > /mnt/index.html;
+          - echo "<h1>Welcome to My Devops Bootcamp Training!!.. </h1>" > /mnt/index.html;
         volumeMounts:
         - name: httpd-storage
           mountPath: /mnt
